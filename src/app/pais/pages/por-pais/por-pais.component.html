@@ -2,13 +2,7 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form action="" (ngSubmit)="buscar()">
-            <input type="text"
-            name="termino"
-            class="form-control"
-            [(ngModel)]="termino"
-            placeholder="buscar País">
-        </form>
+    <app-pais-input></app-pais-input>
     </div>
     <hr>
 
@@ -17,30 +11,7 @@
 
     <div *ngIf="!hayError" class="row">
         <div class="col">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Bandera</th>
-                        <th>Nombre</th>
-                        <th>Poblacion</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let pais of paises; let i = index">
-                        <td>{{i + 1}}</td>
-                        <td>
-                            <img style="width: 50px;" class="small-flag" [src]="pais.flag">
-                        </td>
-                        <td>{{pais.name}}</td>
-                        <td>{{pais.population | number}}</td>
-                        <td>
-                            <a [routerLink]="['pais/', pais.alpha2Code]">ver mas..</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+           <app-pais-tabla [paises]="paises"></app-pais-tabla> 
         </div>
     </div>
 </div>
