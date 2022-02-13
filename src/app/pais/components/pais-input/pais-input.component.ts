@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, OnInit} from '@angular/core';
 import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pais-input',
@@ -22,16 +23,17 @@ export class PaisInputComponent implements OnInit {
 
   
   ngOnInit() {
-    this.debouncer.subscribe(valor => {
-      console.log('debouncer', valor);
+    this.debouncer
+    .pipe(
+      debounceTime(300)
+    )
+    .subscribe(valor => {
+      this.onDebounce.emit(valor);
     });
   }
   
-  teclaPresionada(event: any){
-    const valor = event.target.value;
-    console.log(valor)
-    console.log(this.termino);
-
+  teclaPresionada(){
+    this.debouncer.next(this.termino)
   }
 
 }
