@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
 })
 export class PorRegionComponent  {
 
-  regiones: string[] = ['Africa', 'Oceania', 'Europe', 'Americas', 'Asia']
+  regiones: string[] = ['EU','EFTA','CARICOM','PA','AU','USAN','EEU','AL','ASEAN','CAIS','CEFTA','NAFTA','SAARC',]
   regionActive: string = '';
 
   constructor() { }
@@ -25,6 +25,6 @@ export class PorRegionComponent  {
 
   activarRegion(region : string){
     this.regionActive = region;
-  }
 
+}
 }
