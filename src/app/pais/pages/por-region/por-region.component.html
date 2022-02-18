@@ -8,8 +8,8 @@
     <!--[class.btn-primary]="region === regionActive"-->
     <div class="col">
         <button 
-        class="btn btn-outline-primary" *ngFor="let region of regiones"
-        (click)="activarRegion(region)" 
+            [class]="getClaseCSS(region)" *ngFor="let region of regiones"
+            (click)="activarRegion(region)" 
         [ngClass]="{
             'btn-primary': regionActiva === region,
             'btn-outline-primary': regionActiva !== region
