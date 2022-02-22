@@ -4,9 +4,21 @@
     <div class="col">
     <app-pais-input
         (onEnter)="buscar($event)"
+        (onDebounce)="sugerencias($event)"
         placeholder="Buscar país"
     ></app-pais-input>
+    <ul class="list-group">
+        <li 
+        *ngFor="let pais of paisesSugerido"
+        class="list-group-item list-group-item-action">
+            <a [routerLink]="['/pais', pais.alpha2Code]">
+                {{pais.name}}
+            </a>
+        </li>
+    </ul>
     </div>
+
+
     <hr>
 
     <div *ngIf="hayError"
